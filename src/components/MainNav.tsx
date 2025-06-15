@@ -18,7 +18,7 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
     <>
       {/* Desktop Navigation */}
       <nav className="hidden md:block fixed top-6 left-1/2 transform -translate-x-1/2 z-40 bg-background/80 backdrop-blur-md border border-border rounded-full px-6 py-3">
-        <div className="flex space-x-6">
+        <div className="flex space-x-6 items-center">
           {sections.map((section) => (
             <button
               key={section}
@@ -30,6 +30,10 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
               {section === 'hackathons' ? 'Achievements' : section}
             </button>
           ))}
+          {/* Show ThemeToggle only on md+ (desktop/tablet) */}
+          <div className="hidden md:inline-block ml-4">
+            <ThemeToggle />
+          </div>
         </div>
       </nav>
       {/* Mobile Navigation */}
@@ -37,7 +41,7 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
         <div className="bg-background/90 backdrop-blur-md border border-border rounded-lg px-4 py-3 flex justify-between items-center">
           <span className="text-lg font-bold">SJ</span>
           <div className="flex items-center gap-2">
-            {/* ThemeToggle on mobile */}
+            {/* ThemeToggle only appears here on mobile */}
             <span className="inline-block md:hidden">
               <ThemeToggle />
             </span>
@@ -78,3 +82,4 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
 };
 
 export default MainNav;
+
