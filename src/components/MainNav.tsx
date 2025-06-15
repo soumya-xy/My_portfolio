@@ -1,6 +1,7 @@
+
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Github } from "lucide-react";
 import { useState } from "react";
 
 const sections = ['hero', 'about', 'projects', 'skills', 'experience', 'hackathons', 'contact'];
@@ -15,6 +16,16 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
 
   return (
     <>
+      {/* GitHub icon top left on desktop/tablet */}
+      <a
+        href="https://github.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hidden md:block fixed top-6 left-6 z-50 text-foreground hover:text-primary transition-colors"
+        aria-label="GitHub"
+      >
+        <Github size={28} />
+      </a>
       {/* ThemeToggle only on desktop/tablet, fixed top right */}
       <div className="hidden md:block fixed top-6 right-6 z-50">
         <ThemeToggle />
@@ -78,3 +89,4 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
 };
 
 export default MainNav;
+
