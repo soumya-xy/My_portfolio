@@ -1,3 +1,6 @@
+
+import { Button } from "@/components/ui/button";
+
 const AboutSection = () => (
   <section id="about" className="py-16 sm:py-20 px-4 sm:px-6">
     <div className="max-w-4xl mx-auto">
@@ -21,9 +24,22 @@ const AboutSection = () => (
           projects, or learning about the latest tech trends. I believe in the power of collaboration 
           and continuous learning to drive innovation forward.
         </p>
+        <div className="pt-4 flex justify-center">
+          <Button asChild size="lg" className="px-8 text-base font-semibold">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Download Resume"
+            >
+              View Resume
+            </a>
+          </Button>
+        </div>
       </div>
     </div>
   </section>
 );
 
 export default AboutSection;
+
