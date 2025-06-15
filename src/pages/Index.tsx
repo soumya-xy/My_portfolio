@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
-import { ArrowRight, ArrowDown, Github, Linkedin, Twitter, Mail, ExternalLink, Calendar, MapPin, Trophy, Menu, X } from 'lucide-react';
+import { Github, Linkedin, Twitter, Mail, ExternalLink, Calendar, MapPin, Trophy, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import ThemeToggle from '@/components/ThemeToggle';
 import { ChromeGrid } from '@/components/ui/chrome-grid';
+import { Sheet, SheetContent } from "@/components/ui/sheet";
+import PortfolioConsole from "@/components/PortfolioConsole";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('hero');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [consoleOpen, setConsoleOpen] = useState(false);
 
   // Smooth scroll to section
   const scrollToSection = (sectionId: string) => {
@@ -126,8 +129,28 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-      <ThemeToggle />
-      
+      {/* --- Sheet/Drawer for Portfolio Console --- */}
+      <Sheet open={consoleOpen} onOpenChange={setConsoleOpen}>
+        <SheetContent side="bottom" className="max-w-full flex justify-center items-end p-0 bg-transparent border-none shadow-none">
+          <PortfolioConsole open={consoleOpen} onClose={() => setConsoleOpen(false)} />
+        </SheetContent>
+      </Sheet>
+
+      {/* --- Fixed button for Console --- */}
+      <button
+        onClick={() => setConsoleOpen(true)}
+        className="fixed z-50 bottom-6 right-6 md:bottom-7 md:right-10 rounded-full p-0.5 focus:outline-none focus:ring-4 focus:ring-orange-400/60"
+        style={{
+          background: "linear-gradient(135deg, #fb923c 10%, #3b82f6 90%)",
+          boxShadow: "0 4px 32px rgba(59,130,246,0.17), 0 2px 8px rgba(251,146,60,0.23)"
+        }}
+        aria-label="Open Portfolio Console"
+      >
+        <span className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full bg-black bg-opacity-90 border-2 border-white/20">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" className="text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M4.5 17.5L9 13m0 0-4.5-4.5M9 13h7M21 12A9 9 0 1 1 3 12a9 9 0 0 1 18 0Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </span>
+      </button>
+
       {/* Desktop Navigation */}
       <nav className="hidden md:block fixed top-6 left-1/2 transform -translate-x-1/2 z-40 bg-background/80 backdrop-blur-md border border-border rounded-full px-6 py-3">
         <div className="flex space-x-6">
