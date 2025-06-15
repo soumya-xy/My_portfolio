@@ -1,9 +1,10 @@
 
 import { useState, useEffect } from 'react';
-import { ArrowRight, ArrowDown, Github, Linkedin, Twitter, Mail, ExternalLink, Code, Database, Brain, Trophy, Calendar, MapPin } from 'lucide-react';
+import { ArrowRight, ArrowDown, Github, Linkedin, Twitter, Mail, ExternalLink, Calendar, MapPin, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('hero');
@@ -122,16 +123,18 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+      <ThemeToggle />
+      
       {/* Floating Navigation */}
-      <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 bg-black/80 backdrop-blur-md border border-gray-800 rounded-full px-6 py-3">
+      <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-40 bg-background/80 backdrop-blur-md border border-border rounded-full px-6 py-3">
         <div className="flex space-x-6">
           {['hero', 'about', 'projects', 'skills', 'experience', 'hackathons', 'contact'].map((section) => (
             <button
               key={section}
               onClick={() => scrollToSection(section)}
-              className={`text-sm font-medium transition-colors duration-300 capitalize hover:text-orange-400 ${
-                activeSection === section ? 'text-orange-400' : 'text-gray-400'
+              className={`text-sm font-medium transition-colors duration-300 capitalize hover:text-primary ${
+                activeSection === section ? 'text-primary' : 'text-muted-foreground'
               }`}
             >
               {section === 'hackathons' ? 'Achievements' : section}
@@ -143,33 +146,33 @@ const Index = () => {
       {/* Hero Section */}
       <section id="hero" className="min-h-screen flex items-center justify-center px-6">
         <div className="text-center max-w-4xl mx-auto animate-fade-in">
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-orange-400 via-blue-500 to-orange-400 bg-clip-text text-transparent animate-scale-in">
+          <h1 className="text-6xl md:text-8xl font-bold mb-6 text-foreground animate-scale-in">
             Soumya Jain
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in">
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 animate-fade-in">
             Engineering Student & Frontend Developer
           </p>
-          <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto animate-fade-in">
+          <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto animate-fade-in">
             Passionate about building innovative tech solutions through frontend development, 
             deep learning, and hackathons. Turning ideas into reality, one line of code at a time.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
             <Button 
               onClick={() => scrollToSection('projects')}
-              className="bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
+              className="px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
             >
               View Projects <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button 
               onClick={() => scrollToSection('contact')}
               variant="outline" 
-              className="border-gray-600 text-white hover:bg-white hover:text-black px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
+              className="px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
             >
               Contact Me <Mail className="ml-2 h-4 w-4" />
             </Button>
           </div>
           <div className="mt-16 animate-bounce">
-            <ArrowDown className="h-6 w-6 mx-auto text-gray-400" />
+            <ArrowDown className="h-6 w-6 mx-auto text-muted-foreground" />
           </div>
         </div>
       </section>
@@ -177,10 +180,10 @@ const Index = () => {
       {/* About Me Section */}
       <section id="about" className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-foreground">
             About Me
           </h2>
-          <div className="text-lg text-gray-300 leading-relaxed space-y-6">
+          <div className="text-lg text-muted-foreground leading-relaxed space-y-6">
             <p>
               I'm a passionate engineering student with a deep love for technology and innovation. 
               My journey in tech began with curiosity about how things work, and has evolved into 
@@ -202,31 +205,31 @@ const Index = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-6 bg-gray-900/20">
+      <section id="projects" className="py-20 px-6 bg-muted/20">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-orange-400 to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-foreground">
             Featured Projects
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="bg-gray-900/50 border-gray-800 hover:border-orange-400/50 transition-all duration-300 hover:scale-105 group">
+              <Card key={index} className="bg-card border-border hover:border-primary/50 transition-all duration-300 hover:scale-105 group">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-orange-400 transition-colors">
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
                     {project.name}
                   </h3>
-                  <p className="text-gray-400 mb-4">{project.description}</p>
+                  <p className="text-muted-foreground mb-4">{project.description}</p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tech.map((tech, techIndex) => (
-                      <Badge key={techIndex} variant="secondary" className="bg-gradient-to-r from-blue-500/20 to-orange-500/20 text-white border-gray-700">
+                      <Badge key={techIndex} variant="secondary" className="bg-secondary text-secondary-foreground border-border">
                         {tech}
                       </Badge>
                     ))}
                   </div>
                   <div className="flex gap-4">
-                    <a href={project.github} className="text-gray-400 hover:text-orange-400 transition-colors">
+                    <a href={project.github} className="text-muted-foreground hover:text-primary transition-colors">
                       <Github className="h-5 w-5" />
                     </a>
-                    <a href={project.demo} className="text-gray-400 hover:text-blue-400 transition-colors">
+                    <a href={project.demo} className="text-muted-foreground hover:text-primary transition-colors">
                       <ExternalLink className="h-5 w-5" />
                     </a>
                   </div>
@@ -240,14 +243,14 @@ const Index = () => {
       {/* Skills Section */}
       <section id="skills" className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-foreground">
             Skills & Technologies
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {skills.map((skill, index) => (
-              <div key={index} className="bg-gray-900/50 border border-gray-800 rounded-lg p-4 text-center hover:border-orange-400/50 hover:scale-105 transition-all duration-300 group">
+              <div key={index} className="bg-card border border-border rounded-lg p-4 text-center hover:border-primary/50 hover:scale-105 transition-all duration-300 group">
                 <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">{skill.icon}</div>
-                <div className="text-sm font-medium group-hover:text-orange-400 transition-colors">{skill.name}</div>
+                <div className="text-sm font-medium group-hover:text-primary transition-colors">{skill.name}</div>
               </div>
             ))}
           </div>
@@ -255,21 +258,21 @@ const Index = () => {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-20 px-6 bg-gray-900/20">
+      <section id="experience" className="py-20 px-6 bg-muted/20">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-orange-400 to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-foreground">
             Experience
           </h2>
           <div className="space-y-8">
             {experiences.map((exp, index) => (
-              <Card key={index} className="bg-gray-900/50 border-gray-800 hover:border-blue-400/50 transition-all duration-300">
+              <Card key={index} className="bg-card border-border hover:border-primary/50 transition-all duration-300">
                 <CardContent className="p-6">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-blue-400">{exp.title}</h3>
-                      <p className="text-orange-400 font-medium">{exp.company}</p>
+                      <h3 className="text-xl font-bold text-primary">{exp.title}</h3>
+                      <p className="text-foreground font-medium">{exp.company}</p>
                     </div>
-                    <div className="text-gray-400 text-sm mt-2 md:mt-0">
+                    <div className="text-muted-foreground text-sm mt-2 md:mt-0">
                       <div className="flex items-center gap-2">
                         <Calendar className="h-4 w-4" />
                         {exp.duration}
@@ -280,7 +283,7 @@ const Index = () => {
                       </div>
                     </div>
                   </div>
-                  <p className="text-gray-300">{exp.description}</p>
+                  <p className="text-muted-foreground">{exp.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -291,19 +294,19 @@ const Index = () => {
       {/* Hackathons & Achievements Section */}
       <section id="hackathons" className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-foreground">
             Achievements & Hackathons
           </h2>
           <div className="space-y-6">
             {achievements.map((achievement, index) => (
-              <Card key={index} className="bg-gray-900/50 border-gray-800 hover:border-orange-400/50 transition-all duration-300">
+              <Card key={index} className="bg-card border-border hover:border-primary/50 transition-all duration-300">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <Trophy className="h-8 w-8 text-orange-400 mt-1 flex-shrink-0" />
+                    <Trophy className="h-8 w-8 text-primary mt-1 flex-shrink-0" />
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-orange-400 mb-2">{achievement.title}</h3>
-                      <p className="text-gray-300 mb-2">{achievement.description}</p>
-                      <p className="text-gray-500 text-sm">{achievement.date}</p>
+                      <h3 className="text-xl font-bold text-primary mb-2">{achievement.title}</h3>
+                      <p className="text-muted-foreground mb-2">{achievement.description}</p>
+                      <p className="text-muted-foreground text-sm">{achievement.date}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -314,58 +317,58 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 bg-gray-900/20">
+      <section id="contact" className="py-20 px-6 bg-muted/20">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-orange-400 to-blue-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-foreground">
             Let's Connect
           </h2>
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
-              <p className="text-gray-300 mb-8">
+              <p className="text-muted-foreground mb-8">
                 I'm always excited to discuss new opportunities, collaborate on interesting projects, 
                 or just chat about technology. Feel free to reach out!
               </p>
               <div className="flex space-x-6">
-                <a href="https://github.com" className="text-gray-400 hover:text-orange-400 transition-colors hover:scale-110 transform">
+                <a href="https://github.com" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform">
                   <Github className="h-8 w-8" />
                 </a>
-                <a href="https://linkedin.com" className="text-gray-400 hover:text-blue-400 transition-colors hover:scale-110 transform">
+                <a href="https://linkedin.com" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform">
                   <Linkedin className="h-8 w-8" />
                 </a>
-                <a href="https://twitter.com" className="text-gray-400 hover:text-blue-400 transition-colors hover:scale-110 transform">
+                <a href="https://twitter.com" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform">
                   <Twitter className="h-8 w-8" />
                 </a>
-                <a href="mailto:soumya@example.com" className="text-gray-400 hover:text-orange-400 transition-colors hover:scale-110 transform">
+                <a href="mailto:soumya@example.com" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform">
                   <Mail className="h-8 w-8" />
                 </a>
               </div>
             </div>
-            <Card className="bg-gray-900/50 border-gray-800">
+            <Card className="bg-card border-border">
               <CardContent className="p-6">
                 <form className="space-y-4">
                   <div>
                     <input 
                       type="text" 
                       placeholder="Your Name" 
-                      className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-orange-400 focus:outline-none transition-colors"
+                      className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-colors"
                     />
                   </div>
                   <div>
                     <input 
                       type="email" 
                       placeholder="Your Email" 
-                      className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-orange-400 focus:outline-none transition-colors"
+                      className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-colors"
                     />
                   </div>
                   <div>
                     <textarea 
                       placeholder="Your Message" 
                       rows={4}
-                      className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-orange-400 focus:outline-none transition-colors resize-none"
+                      className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-colors resize-none"
                     ></textarea>
                   </div>
-                  <Button className="w-full bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white py-3 rounded-lg transition-all duration-300 hover:scale-105">
+                  <Button className="w-full py-3 rounded-lg transition-all duration-300 hover:scale-105">
                     Send Message
                   </Button>
                 </form>
@@ -376,9 +379,9 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 border-t border-gray-800">
+      <footer className="py-8 px-6 border-t border-border">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-gray-400">
+          <p className="text-muted-foreground">
             © 2024 Soumya Jain. Built with React, Tailwind CSS, and lots of ☕
           </p>
         </div>
