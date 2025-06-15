@@ -16,6 +16,10 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
 
   return (
     <>
+      {/* ThemeToggle only on desktop/tablet, fixed top right */}
+      <div className="hidden md:block fixed top-6 right-6 z-50">
+        <ThemeToggle />
+      </div>
       {/* Desktop Navigation */}
       <nav className="hidden md:block fixed top-6 left-1/2 transform -translate-x-1/2 z-40 bg-background/80 backdrop-blur-md border border-border rounded-full px-6 py-3">
         <div className="flex space-x-6 items-center">
@@ -30,10 +34,6 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
               {section === 'hackathons' ? 'Achievements' : section}
             </button>
           ))}
-          {/* Show ThemeToggle only on md+ (desktop/tablet) */}
-          <div className="hidden md:inline-block ml-4">
-            <ThemeToggle />
-          </div>
         </div>
       </nav>
       {/* Mobile Navigation */}
@@ -82,4 +82,3 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
 };
 
 export default MainNav;
-
