@@ -113,8 +113,6 @@ const Box = ({
                 metalness={1}
                 clearcoat={1}
                 clearcoatRoughness={0}
-                clearcoatNormalScale={1}
-                clearcoatNormalMap={null}
             />
         </mesh>
     );
@@ -203,7 +201,6 @@ function GridOfBoxes() {
 export function ChromeGrid() {
   return (
     <div className="h-full w-full bg-black relative z-0">
-
       <Canvas camera={{ 
         position: [-9.31, 12, 24.72], 
         rotation: [-0.65, -0.2, -0.13],
