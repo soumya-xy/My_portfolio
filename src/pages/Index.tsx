@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { ArrowRight, ArrowDown, Github, Linkedin, Twitter, Mail, ExternalLink, Calendar, MapPin, Trophy } from 'lucide-react';
+import { ArrowRight, ArrowDown, Github, Linkedin, Twitter, Mail, ExternalLink, Calendar, MapPin, Trophy, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -8,12 +8,14 @@ import ThemeToggle from '@/components/ThemeToggle';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('hero');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Smooth scroll to section
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false); // Close mobile menu after navigation
     }
   };
 
@@ -126,8 +128,8 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       <ThemeToggle />
       
-      {/* Floating Navigation */}
-      <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-40 bg-background/80 backdrop-blur-md border border-border rounded-full px-6 py-3">
+      {/* Desktop Navigation */}
+      <nav className="hidden md:block fixed top-6 left-1/2 transform -translate-x-1/2 z-40 bg-background/80 backdrop-blur-md border border-border rounded-full px-6 py-3">
         <div className="flex space-x-6">
           {['hero', 'about', 'projects', 'skills', 'experience', 'hackathons', 'contact'].map((section) => (
             <button
@@ -143,47 +145,81 @@ const Index = () => {
         </div>
       </nav>
 
+      {/* Mobile Navigation */}
+      <nav className="md:hidden fixed top-4 left-4 right-4 z-50">
+        <div className="bg-background/90 backdrop-blur-md border border-border rounded-lg px-4 py-3 flex justify-between items-center">
+          <span className="text-lg font-bold">SJ</span>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2"
+          >
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </Button>
+        </div>
+        
+        {/* Mobile Menu Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="mt-2 bg-background/95 backdrop-blur-md border border-border rounded-lg p-4 animate-fade-in">
+            <div className="grid grid-cols-2 gap-3">
+              {['hero', 'about', 'projects', 'skills', 'experience', 'hackathons', 'contact'].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => scrollToSection(section)}
+                  className={`text-sm font-medium transition-colors duration-300 capitalize hover:text-primary text-left p-2 rounded ${
+                    activeSection === section ? 'text-primary bg-accent' : 'text-muted-foreground'
+                  }`}
+                >
+                  {section === 'hackathons' ? 'Achievements' : section}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </nav>
+
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center px-6">
+      <section id="hero" className="min-h-screen flex items-center justify-center px-4 sm:px-6">
         <div className="text-center max-w-4xl mx-auto animate-fade-in">
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 text-foreground animate-scale-in">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-4 sm:mb-6 text-foreground animate-scale-in">
             Soumya Jain
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 animate-fade-in">
+          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 sm:mb-8 animate-fade-in">
             Engineering Student & Frontend Developer
           </p>
-          <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto animate-fade-in">
+          <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-12 max-w-2xl mx-auto animate-fade-in leading-relaxed">
             Passionate about building innovative tech solutions through frontend development, 
             deep learning, and hackathons. Turning ideas into reality, one line of code at a time.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
             <Button 
               onClick={() => scrollToSection('projects')}
-              className="px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
+              className="px-6 sm:px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
             >
               View Projects <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button 
               onClick={() => scrollToSection('contact')}
               variant="outline" 
-              className="px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
+              className="px-6 sm:px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
             >
               Contact Me <Mail className="ml-2 h-4 w-4" />
             </Button>
           </div>
-          <div className="mt-16 animate-bounce">
+          <div className="mt-12 sm:mt-16 animate-bounce">
             <ArrowDown className="h-6 w-6 mx-auto text-muted-foreground" />
           </div>
         </div>
       </section>
 
       {/* About Me Section */}
-      <section id="about" className="py-20 px-6">
+      <section id="about" className="py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-foreground">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 text-center text-foreground">
             About Me
           </h2>
-          <div className="text-lg text-muted-foreground leading-relaxed space-y-6">
+          <div className="text-base sm:text-lg text-muted-foreground leading-relaxed space-y-4 sm:space-y-6">
             <p>
               I'm a passionate engineering student with a deep love for technology and innovation. 
               My journey in tech began with curiosity about how things work, and has evolved into 
@@ -205,22 +241,22 @@ const Index = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-6 bg-muted/20">
+      <section id="projects" className="py-16 sm:py-20 px-4 sm:px-6 bg-muted/20">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-foreground">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center text-foreground">
             Featured Projects
           </h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
             {projects.map((project, index) => (
               <Card key={index} className="bg-card border-border hover:border-primary/50 transition-all duration-300 hover:scale-105 group">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                <CardContent className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-bold mb-3 group-hover:text-primary transition-colors">
                     {project.name}
                   </h3>
-                  <p className="text-muted-foreground mb-4">{project.description}</p>
+                  <p className="text-muted-foreground mb-4 text-sm sm:text-base">{project.description}</p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tech.map((tech, techIndex) => (
-                      <Badge key={techIndex} variant="secondary" className="bg-secondary text-secondary-foreground border-border">
+                      <Badge key={techIndex} variant="secondary" className="bg-secondary text-secondary-foreground border-border text-xs sm:text-sm">
                         {tech}
                       </Badge>
                     ))}
@@ -241,16 +277,16 @@ const Index = () => {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 px-6">
+      <section id="skills" className="py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-foreground">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center text-foreground">
             Skills & Technologies
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {skills.map((skill, index) => (
-              <div key={index} className="bg-card border border-border rounded-lg p-4 text-center hover:border-primary/50 hover:scale-105 transition-all duration-300 group">
-                <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">{skill.icon}</div>
-                <div className="text-sm font-medium group-hover:text-primary transition-colors">{skill.name}</div>
+              <div key={index} className="bg-card border border-border rounded-lg p-3 sm:p-4 text-center hover:border-primary/50 hover:scale-105 transition-all duration-300 group">
+                <div className="text-xl sm:text-2xl mb-2 group-hover:scale-110 transition-transform">{skill.icon}</div>
+                <div className="text-xs sm:text-sm font-medium group-hover:text-primary transition-colors">{skill.name}</div>
               </div>
             ))}
           </div>
@@ -258,32 +294,32 @@ const Index = () => {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-20 px-6 bg-muted/20">
+      <section id="experience" className="py-16 sm:py-20 px-4 sm:px-6 bg-muted/20">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-foreground">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center text-foreground">
             Experience
           </h2>
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {experiences.map((exp, index) => (
               <Card key={index} className="bg-card border-border hover:border-primary/50 transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                    <div>
-                      <h3 className="text-xl font-bold text-primary">{exp.title}</h3>
+                <CardContent className="p-4 sm:p-6">
+                  <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:items-start sm:justify-between mb-4">
+                    <div className="flex-1">
+                      <h3 className="text-lg sm:text-xl font-bold text-primary">{exp.title}</h3>
                       <p className="text-foreground font-medium">{exp.company}</p>
                     </div>
-                    <div className="text-muted-foreground text-sm mt-2 md:mt-0">
-                      <div className="flex items-center gap-2">
-                        <Calendar className="h-4 w-4" />
-                        {exp.duration}
+                    <div className="text-muted-foreground text-sm">
+                      <div className="flex items-center gap-2 mb-1">
+                        <Calendar className="h-4 w-4 flex-shrink-0" />
+                        <span className="break-all">{exp.duration}</span>
                       </div>
-                      <div className="flex items-center gap-2 mt-1">
-                        <MapPin className="h-4 w-4" />
-                        {exp.location}
+                      <div className="flex items-center gap-2">
+                        <MapPin className="h-4 w-4 flex-shrink-0" />
+                        <span>{exp.location}</span>
                       </div>
                     </div>
                   </div>
-                  <p className="text-muted-foreground">{exp.description}</p>
+                  <p className="text-muted-foreground text-sm sm:text-base">{exp.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -292,21 +328,21 @@ const Index = () => {
       </section>
 
       {/* Hackathons & Achievements Section */}
-      <section id="hackathons" className="py-20 px-6">
+      <section id="hackathons" className="py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-foreground">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center text-foreground">
             Achievements & Hackathons
           </h2>
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {achievements.map((achievement, index) => (
               <Card key={index} className="bg-card border-border hover:border-primary/50 transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <Trophy className="h-8 w-8 text-primary mt-1 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-primary mb-2">{achievement.title}</h3>
-                      <p className="text-muted-foreground mb-2">{achievement.description}</p>
-                      <p className="text-muted-foreground text-sm">{achievement.date}</p>
+                <CardContent className="p-4 sm:p-6">
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <Trophy className="h-6 w-6 sm:h-8 sm:w-8 text-primary mt-1 flex-shrink-0" />
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg sm:text-xl font-bold text-primary mb-2">{achievement.title}</h3>
+                      <p className="text-muted-foreground mb-2 text-sm sm:text-base">{achievement.description}</p>
+                      <p className="text-muted-foreground text-xs sm:text-sm">{achievement.date}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -317,58 +353,58 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 bg-muted/20">
+      <section id="contact" className="py-16 sm:py-20 px-4 sm:px-6 bg-muted/20">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-foreground">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center text-foreground">
             Let's Connect
           </h2>
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
             <div>
-              <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
-              <p className="text-muted-foreground mb-8">
+              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Get In Touch</h3>
+              <p className="text-muted-foreground mb-6 sm:mb-8 text-sm sm:text-base">
                 I'm always excited to discuss new opportunities, collaborate on interesting projects, 
                 or just chat about technology. Feel free to reach out!
               </p>
-              <div className="flex space-x-6">
+              <div className="flex space-x-4 sm:space-x-6">
                 <a href="https://github.com" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform">
-                  <Github className="h-8 w-8" />
+                  <Github className="h-6 w-6 sm:h-8 sm:w-8" />
                 </a>
                 <a href="https://linkedin.com" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform">
-                  <Linkedin className="h-8 w-8" />
+                  <Linkedin className="h-6 w-6 sm:h-8 sm:w-8" />
                 </a>
                 <a href="https://twitter.com" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform">
-                  <Twitter className="h-8 w-8" />
+                  <Twitter className="h-6 w-6 sm:h-8 sm:w-8" />
                 </a>
                 <a href="mailto:soumya@example.com" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform">
-                  <Mail className="h-8 w-8" />
+                  <Mail className="h-6 w-6 sm:h-8 sm:w-8" />
                 </a>
               </div>
             </div>
             <Card className="bg-card border-border">
-              <CardContent className="p-6">
+              <CardContent className="p-4 sm:p-6">
                 <form className="space-y-4">
                   <div>
                     <input 
                       type="text" 
                       placeholder="Your Name" 
-                      className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-colors"
+                      className="w-full bg-background border border-border rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-colors text-sm sm:text-base"
                     />
                   </div>
                   <div>
                     <input 
                       type="email" 
                       placeholder="Your Email" 
-                      className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-colors"
+                      className="w-full bg-background border border-border rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-colors text-sm sm:text-base"
                     />
                   </div>
                   <div>
                     <textarea 
                       placeholder="Your Message" 
                       rows={4}
-                      className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-colors resize-none"
+                      className="w-full bg-background border border-border rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-colors resize-none text-sm sm:text-base"
                     ></textarea>
                   </div>
-                  <Button className="w-full py-3 rounded-lg transition-all duration-300 hover:scale-105">
+                  <Button className="w-full py-2 sm:py-3 rounded-lg transition-all duration-300 hover:scale-105">
                     Send Message
                   </Button>
                 </form>
@@ -379,9 +415,9 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 border-t border-border">
+      <footer className="py-6 sm:py-8 px-4 sm:px-6 border-t border-border">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground text-sm sm:text-base">
             © 2024 Soumya Jain. Built with React, Tailwind CSS, and lots of ☕
           </p>
         </div>
