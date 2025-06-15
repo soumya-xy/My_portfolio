@@ -16,21 +16,23 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
 
   return (
     <>
-      {/* Desktop Navigation (with aligned GitHub + ThemeToggle) */}
-      <nav className="hidden md:flex fixed top-6 left-1/2 transform -translate-x-1/2 z-40 bg-background/80 backdrop-blur-md border border-border rounded-full px-6 py-3 min-w-[340px] items-center space-x-6">
-        {/* Left: GitHub */}
-        <a
-          href="https://github.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-foreground hover:text-primary transition-colors mr-3"
-          aria-label="GitHub"
-          style={{ display: 'flex', alignItems: 'center' }}
-        >
-          <Github size={24} />
-        </a>
-        {/* Center: Sections */}
-        <div className="flex space-x-6 items-center flex-1 justify-center">
+      {/* GitHub icon top left on desktop/tablet */}
+      <a
+        href="https://github.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hidden md:block fixed top-6 left-6 z-50 text-foreground hover:text-primary transition-colors"
+        aria-label="GitHub"
+      >
+        <Github size={28} />
+      </a>
+      {/* ThemeToggle only on desktop/tablet, fixed top right */}
+      <div className="hidden md:block fixed top-6 right-6 z-50">
+        <ThemeToggle />
+      </div>
+      {/* Desktop Navigation */}
+      <nav className="hidden md:block fixed top-6 left-1/2 transform -translate-x-1/2 z-40 bg-background/80 backdrop-blur-md border border-border rounded-full px-6 py-3">
+        <div className="flex space-x-6 items-center">
           {sections.map((section) => (
             <button
               key={section}
@@ -42,10 +44,6 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
               {section === 'hackathons' ? 'Achievements' : section}
             </button>
           ))}
-        </div>
-        {/* Right: Theme Toggle */}
-        <div className="flex items-center ml-3">
-          <ThemeToggle className="relative" />
         </div>
       </nav>
       {/* Mobile Navigation */}
@@ -91,3 +89,4 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
 };
 
 export default MainNav;
+
