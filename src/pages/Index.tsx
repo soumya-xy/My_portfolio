@@ -1,10 +1,10 @@
-
 import { useState, useEffect } from 'react';
 import { ArrowRight, ArrowDown, Github, Linkedin, Twitter, Mail, ExternalLink, Calendar, MapPin, Trophy, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import ThemeToggle from '@/components/ThemeToggle';
+import ChromeGrid from '@/components/ChromeGrid';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('hero');
@@ -180,36 +180,17 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center px-4 sm:px-6">
-        <div className="text-center max-w-4xl mx-auto animate-fade-in">
-          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-4 sm:mb-6 text-foreground animate-scale-in">
-            Soumya Jain
+      <section id="hero" className="relative min-h-screen flex items-center justify-center px-0">
+        <div className="absolute inset-0 h-full w-full z-0">
+          <ChromeGrid />
+        </div>
+        <div className="absolute z-10 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 pointer-events-none flex flex-col justify-center items-center">
+          <h1 className="text-5xl md:text-7xl font-light mb-4 tracking-widest text-white whitespace-nowrap">
+            Surface Tension
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 sm:mb-8 animate-fade-in">
-            Engineering Student & Frontend Developer
+          <p className="text-sm md:text-base text-white/70 font-mono tracking-wide">
+            Metal that responds to touch.
           </p>
-          <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-12 max-w-2xl mx-auto animate-fade-in leading-relaxed">
-            Passionate about building innovative tech solutions through frontend development, 
-            deep learning, and hackathons. Turning ideas into reality, one line of code at a time.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
-            <Button 
-              onClick={() => scrollToSection('projects')}
-              className="px-6 sm:px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
-            >
-              View Projects <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <Button 
-              onClick={() => scrollToSection('contact')}
-              variant="outline" 
-              className="px-6 sm:px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
-            >
-              Contact Me <Mail className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
-          <div className="mt-12 sm:mt-16 animate-bounce">
-            <ArrowDown className="h-6 w-6 mx-auto text-muted-foreground" />
-          </div>
         </div>
       </section>
 
