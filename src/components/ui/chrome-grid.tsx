@@ -107,7 +107,7 @@ const Box = ({
             rotation={[Math.PI / 2, 0, 0]}
         >
             <meshPhysicalMaterial 
-                color="#232323" 
+                color={new THREE.Color("#232323")} // Fix: pass a THREE.Color instance instead of string
                 roughness={0.5} 
                 metalness={1}
                 clearcoat={1}

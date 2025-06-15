@@ -5,10 +5,13 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import ThemeToggle from '@/components/ThemeToggle';
 import { ChromeGrid } from '@/components/ui/chrome-grid';
+import PortfolioConsole from "@/components/PortfolioConsole";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('hero');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [consoleOpen, setConsoleOpen] = useState(false);
 
   // Smooth scroll to section
   const scrollToSection = (sectionId: string) => {
@@ -394,6 +397,28 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Portfolio Console Button & Sheet */}
+      <Sheet open={consoleOpen} onOpenChange={setConsoleOpen}>
+        <SheetTrigger asChild>
+          <button
+            className="fixed z-50 right-5 bottom-5 rounded-full p-[2px] shadow-lg focus:outline-none transition-all"
+            style={{
+              background: "linear-gradient(135deg, #ff9800 0%, #2196f3 100%)"
+            }}
+            aria-label="Open Portfolio Console"
+          >
+            <span className="block bg-background rounded-full w-14 h-14 flex items-center justify-center text-lg font-mono font-bold text-[#ff9800] hover:scale-105 transition-transform border-2 border-white/20">
+              $
+            </span>
+          </button>
+        </SheetTrigger>
+        <SheetContent side="bottom" className="max-w-full p-0 rounded-t-xl border-none">
+          <div className="flex flex-col items-center p-5 pt-6">
+            <PortfolioConsole />
+          </div>
+        </SheetContent>
+      </Sheet>
 
       {/* Footer */}
       <footer className="py-6 sm:py-8 px-4 sm:px-6 border-t border-border">
