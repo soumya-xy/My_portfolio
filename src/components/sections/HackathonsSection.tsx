@@ -22,12 +22,16 @@ const achievements = [
 const HackathonsSection = () => (
   <section id="hackathons" className="py-16 sm:py-20 px-4 sm:px-6">
     <div className="max-w-4xl mx-auto">
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center text-foreground">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center text-foreground animate-fade-in">
         Achievements & Hackathons
       </h2>
       <div className="space-y-4 sm:space-y-6">
         {achievements.map((achievement, index) => (
-          <Card key={index} className="bg-card border-border hover:border-primary/50 transition-all duration-300">
+          <Card
+            key={index}
+            className={`bg-card border-border hover:border-primary/50 transition-all duration-300 animate-slide-up`}
+            style={{ animationDelay: `${index * 120 + 60}ms` }}
+          >
             <CardContent className="p-4 sm:p-6">
               <div className="flex items-start gap-3 sm:gap-4">
                 <Trophy className="h-6 w-6 sm:h-8 sm:w-8 text-primary mt-1 flex-shrink-0" />
