@@ -1,4 +1,3 @@
-
 'use client'
 
 import React, { useRef, useState, useMemo, useEffect } from 'react'
@@ -113,8 +112,6 @@ const Box = ({
                 metalness={1}
                 clearcoat={1}
                 clearcoatRoughness={0}
-                clearcoatNormalScale={1}
-                clearcoatNormalMap={null}
             />
         </mesh>
     );
@@ -246,4 +243,4 @@ export function ChromeGrid() {
       </Canvas>
     </div>
   )
-} 
+}
