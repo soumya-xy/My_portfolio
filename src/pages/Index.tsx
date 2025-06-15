@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import ThemeToggle from '@/components/ThemeToggle';
-import ChromeGrid from '@/components/ChromeGrid';
+import { ChromeGrid } from '@/components/ui/chrome-grid';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('hero');
