@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
 import { Menu, X } from "lucide-react";
@@ -41,10 +40,7 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
         <div className="bg-background/90 backdrop-blur-md border border-border rounded-lg px-4 py-3 flex justify-between items-center">
           <span className="text-lg font-bold">SJ</span>
           <div className="flex items-center gap-2">
-            {/* ThemeToggle on mobile should NOT be fixed, just normal */}
-            <span className="inline-block md:hidden">
-              <ThemeToggle />
-            </span>
+            {/* Removed ThemeToggle on mobile */}
             <Button
               variant="ghost"
               size="sm"
