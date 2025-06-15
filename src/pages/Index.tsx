@@ -187,35 +187,10 @@ const Index = () => {
         </div>
         
         {/* Content overlay */}
-        <div className="relative z-10 text-center max-w-4xl mx-auto animate-fade-in">
-          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-4 sm:mb-6 text-white animate-scale-in">
+        <div className="relative z-10 text-center max-w-4xl mx-auto animate-fade-in flex items-center justify-center h-full min-h-[40vh]">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-thin mb-0 text-white animate-scale-in">
             Soumya Jain
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-white/70 mb-6 sm:mb-8 animate-fade-in">
-            Engineering Student & Frontend Developer
-          </p>
-          <p className="text-base sm:text-lg text-white/60 mb-8 sm:mb-12 max-w-2xl mx-auto animate-fade-in leading-relaxed">
-            Passionate about building innovative tech solutions through frontend development, 
-            deep learning, and hackathons. Turning ideas into reality, one line of code at a time.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
-            <Button 
-              onClick={() => scrollToSection('projects')}
-              className="px-6 sm:px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 bg-white text-black hover:bg-white/90"
-            >
-              View Projects <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <Button 
-              onClick={() => scrollToSection('contact')}
-              variant="outline" 
-              className="px-6 sm:px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 border-white text-white hover:bg-white/10"
-            >
-              Contact Me <Mail className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
-          <div className="mt-12 sm:mt-16 animate-bounce">
-            <ArrowDown className="h-6 w-6 mx-auto text-white/60" />
-          </div>
         </div>
       </section>
 
