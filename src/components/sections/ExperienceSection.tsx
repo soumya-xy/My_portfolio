@@ -22,16 +22,12 @@ const experiences = [
 const ExperienceSection = () => (
   <section id="experience" className="py-16 sm:py-20 px-4 sm:px-6 bg-muted/20">
     <div className="max-w-4xl mx-auto">
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center text-foreground animate-fade-in">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center text-foreground">
         Experience
       </h2>
       <div className="space-y-6 sm:space-y-8">
         {experiences.map((exp, index) => (
-          <Card
-            key={index}
-            className="bg-card border-border hover:border-primary/50 transition-all duration-300 animate-slide-up"
-            style={{ animationDelay: `${index * 120 + 60}ms` }}
-          >
+          <Card key={index} className="bg-card border-border hover:border-primary/50 transition-all duration-300">
             <CardContent className="p-4 sm:p-6">
               <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:items-start sm:justify-between mb-4">
                 <div className="flex-1">
