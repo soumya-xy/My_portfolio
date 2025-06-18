@@ -1,53 +1,64 @@
-
-import { Card, CardContent } from "@/components/ui/card";
-import { Calendar, MapPin } from "lucide-react";
+import { Calendar, MapPin, Briefcase } from "lucide-react";
 
 const experiences = [
   {
-    title: "Frontend Developer Intern",
-    company: "TechCorp Solutions",
-    duration: "Jun 2024 - Aug 2024",
+    title: "Campus Ambassador",
+    company: "IIT Bombay",
+    duration: "aug 2024 - dec 2024",
     location: "Remote",
-    description: "Developed responsive web applications using React and improved user engagement by 35%."
+    description:
+      "Promoted IIT Bombay’s events and initiatives on campus, increased student participation by 40%, and collaborated with the core team to manage outreach and engagement strategies.",
   },
+  
   {
     title: "Freelance Web Developer",
     company: "Independent",
-    duration: "Jan 2024 - Present",
+    duration: "Jan 2025 - Present",
     location: "Remote",
-    description: "Built custom websites for small businesses, focusing on performance and user experience."
-  }
+    description:
+      "Built custom websites for small businesses, focusing on performance and user experience.",
+  },
 ];
 
 const ExperienceSection = () => (
-  <section id="experience" className="py-16 sm:py-20 px-4 sm:px-6 bg-muted/20">
+  <section id="experience" className="py-20 px-6 sm:px-10">
     <div className="max-w-4xl mx-auto">
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center text-foreground">
+      <h2 className="text-4xl md:text-5xl font-bold text-center text-foreground mb-16">
         Experience
       </h2>
-      <div className="space-y-6 sm:space-y-8">
+
+      <div className="relative pl-6 border-l-2 border-border">
         {experiences.map((exp, index) => (
-          <Card key={index} className="bg-card border-border hover:border-primary/50 transition-all duration-300">
-            <CardContent className="p-4 sm:p-6">
-              <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:items-start sm:justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="text-lg sm:text-xl font-bold text-primary">{exp.title}</h3>
-                  <p className="text-foreground font-medium">{exp.company}</p>
-                </div>
-                <div className="text-muted-foreground text-sm">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Calendar className="h-4 w-4 flex-shrink-0" />
-                    <span className="break-all">{exp.duration}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 flex-shrink-0" />
-                    <span>{exp.location}</span>
-                  </div>
-                </div>
+          <div key={index} className="relative mb-14">
+            <div className="absolute -left-[0.6rem] top-2 w-3 h-3 bg-primary rounded-full shadow-md" />
+
+            <div className="bg-card border border-border backdrop-blur-md rounded-lg p-5 sm:p-6 hover:scale-[1.03] transition-all duration-300">
+              <div className="flex items-center gap-3 mb-2">
+                <Briefcase className="w-5 h-5 text-primary" />
+                <h3 className="text-lg sm:text-xl font-semibold text-foreground">
+                  {exp.title}
+                </h3>
               </div>
-              <p className="text-muted-foreground text-sm sm:text-base">{exp.description}</p>
-            </CardContent>
-          </Card>
+              <p className="text-muted-foreground font-medium mb-3">
+                {exp.company}
+              </p>
+
+              <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-3">
+                <span className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4" />
+                  {exp.duration}
+                </span>
+                <span className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4" />
+                  {exp.location}
+                </span>
+              </div>
+
+              <p className="text-muted-foreground text-sm sm:text-base">
+                {exp.description}
+              </p>
+            </div>
+          </div>
         ))}
       </div>
     </div>

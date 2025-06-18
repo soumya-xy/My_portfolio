@@ -22,7 +22,7 @@ const SkillsSection = () => (
         {skills.map((skill, index) => (
           <div
             key={index}
-            className="bg-card border border-border rounded-md p-2 sm:p-3 text-center hover:border-primary/50 hover:scale-105 transition-all duration-300 group"
+            className="bg-card border border-border rounded-full p-2 sm:p-3 text-center hover:shadow-[0_4px_20px_rgba(255,165,0,0.3)] hover:scale-[1.03] transition-all duration-300 group"
             style={{ minWidth: 0 }}
           >
             <div className="text-lg sm:text-xl mb-1 group-hover:scale-110 transition-transform">

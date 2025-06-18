@@ -17,27 +17,28 @@ const ContactSection = () => (
             or just chat about technology. Feel free to reach out!
           </p>
           <div className="flex space-x-4 sm:space-x-6">
-            <a href="https://github.com" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform">
+            <a href="https://github.com/soumya-xy" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform">
               <Github className="h-6 w-6 sm:h-8 sm:w-8" />
             </a>
-            <a href="https://linkedin.com" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform">
+            <a href="https://www.linkedin.com/in/soumya-jain-16561b253?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform">
               <Linkedin className="h-6 w-6 sm:h-8 sm:w-8" />
             </a>
-            <a href="https://twitter.com" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform">
+            <a href="https://x.com/anonymous781641?t=FCW0-0p_t1oTCH_GjZY0mA&s=08" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform">
               <Twitter className="h-6 w-6 sm:h-8 sm:w-8" />
             </a>
-            <a href="mailto:soumya@example.com" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform">
+            <a href="mailto:23ucs717@lnmiit.ac.in" className="text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform">
               <Mail className="h-6 w-6 sm:h-8 sm:w-8" />
             </a>
           </div>
         </div>
         <Card className="bg-card border-border">
           <CardContent className="p-4 sm:p-6">
-            <form className="space-y-4">
+            <form action="https://formspree.io/f/movwwbga" method="POST" className="space-y-4">
               <div>
                 <input 
                   type="text" 
                   placeholder="Your Name" 
+                  name="name"
                   className="w-full bg-background border border-border rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-colors text-sm sm:text-base"
                 />
               </div>
@@ -45,12 +46,14 @@ const ContactSection = () => (
                 <input 
                   type="email" 
                   placeholder="Your Email" 
+                  name="email"
                   className="w-full bg-background border border-border rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-colors text-sm sm:text-base"
                 />
               </div>
               <div>
                 <textarea 
                   placeholder="Your Message" 
+                  name="message"
                   rows={4}
                   className="w-full bg-background border border-border rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-colors resize-none text-sm sm:text-base"
                 ></textarea>
