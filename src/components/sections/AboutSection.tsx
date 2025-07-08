@@ -8,7 +8,7 @@ const AboutSection = () => (
         About Me
       </h2>
       <div className="text-base sm:text-lg text-muted-foreground leading-relaxed space-y-4 sm:space-y-6">
-        <p className="font-bold text-xl">
+        <p>
           I specialize in frontend development, creating beautiful and functional user experiences 
           using modern technologies like React and Next.js. But my interests don't stop there – 
           I'm also diving deep into machine learning and AI, exploring how these technologies 

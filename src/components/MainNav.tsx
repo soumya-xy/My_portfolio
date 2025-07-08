@@ -52,7 +52,7 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
               className={`px-4 py-2 rounded-full transition-all text-sm font-semibold capitalize
                 ${
                   activeSection === section
-                    ? "bg-gradient-to-tr from-orange-500 to-blue-500 text-white shadow-md"
+                    ? "bg-gradient-to-tr from-orange-900 to-blue-800 text-white shadow-md"
                     : "text-white/80 hover:text-white hover:bg-white/10"
                 }`}
             >
@@ -95,7 +95,7 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
                 className={`text-xl font-semibold capitalize px-4 py-2 rounded-full transition-all tracking-wide
                   ${
                     activeSection === section
-                      ? "bg-gradient-to-tr from-orange-500 to-blue-500"
+                      ? "bg-gradient-to-tr from-orange-900 to-blue-800"
                       : "text-white/70 hover:bg-white/10 hover:text-white"
                   }`}
               >

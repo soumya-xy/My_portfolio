@@ -12,7 +12,7 @@ const PortfolioConsoleSheet = () => {
       {/* Trigger Button */}
       <SheetTrigger asChild>
         <Button
-          className="fixed z-50 bottom-6 right-6 w-14 h-14 rounded-full bg-gradient-to-tr from-orange-500 to-blue-500 text-white shadow-xl hover:scale-105 transition-transform"
+          className="fixed z-50 bottom-6 right-6 w-14 h-14 rounded-full bg-gradient-to-tr from-orange-900 to-blue-800 text-white shadow-xl hover:scale-105 transition-transform"
           size="icon"
           aria-label="Open Console"
         >

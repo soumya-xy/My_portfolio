@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 
 const ContactSection = () => (
-  <section id="contact" className="py-16 sm:py-20 px-4 sm:px-6 bg-muted/20">
+  <section id="contact" className="py-16 sm:py-20 px-4 sm:px-6">
     <div className="max-w-4xl mx-auto">
       <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-center text-foreground">
         Let's Connect

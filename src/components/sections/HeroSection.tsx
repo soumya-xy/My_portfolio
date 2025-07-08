@@ -2,7 +2,10 @@ import { ChromeGrid } from "@/components/ui/chrome-grid";
 import { Typewriter } from "react-simple-typewriter";
 
 const HeroSection = () => (
-  <section id="hero" className="relative min-h-screen flex items-center justify-center px-2">
+  <section
+    id="hero"
+    className="relative min-h-screen flex items-center justify-center px-2"
+  >
     <div className="absolute inset-0 h-full w-full z-0">
       <ChromeGrid />
     </div>
