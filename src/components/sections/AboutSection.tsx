@@ -26,7 +26,7 @@ const AboutSection = () => (
         <div className="pt-4 flex justify-center gap-12">
           <StarBorder speed="2s" color="orange">
             <a
-              href="https://drive.google.com/file/d/1O4NkNrblQFWrObL9x3rCAlJ867bUMqpX/view?usp=sharing"
+              href="https://drive.google.com/file/d/1bifafKGJDdN-EinBxMcgpxeUbYgP6q5l/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Download Resume"
