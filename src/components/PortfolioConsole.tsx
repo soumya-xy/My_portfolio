@@ -5,7 +5,7 @@ export default function PortfolioConsole() {
   const [history, setHistory] = useState([
     {
       type: "system",
-      text: "Welcome to the Portfolio Console! Type 'help' to get started.",
+      text: "Hello, Developer! You've entered Soumya's interactive portfolio terminal. Type **help** to explore commands and projects.",
     },
   ]);
   const endRef = useRef<HTMLDivElement>(null);

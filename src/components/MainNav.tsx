@@ -30,7 +30,7 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
           href="https://github.com/soumya-xy"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-white hover:text-gray-900 transition"
+          className="text-foreground hover:text-gray-900 dark:hover:text-white transition"
           aria-label="GitHub"
         >
           <Github size={24} />
@@ -49,11 +49,11 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
             <button
               key={section}
               onClick={() => onSectionClick(section)}
-              className={`px-4 py-2 rounded-full transition-all text-sm font-semibold capitalize
+              className={`px-4 py-2 rounded-full transition-all text-sm font-semibold capitalize text-foreground
                 ${
                   activeSection === section
                     ? "bg-gradient-to-tr from-orange-900 to-blue-800 text-white shadow-md"
-                    : "text-white/80 hover:text-white hover:bg-white/10"
+                    : "hover:text-black dark:hover:text-white hover:bg-white/10"
                 }`}
             >
               {section === "hackathons" ? "Achievements" : section}
@@ -65,16 +65,20 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
       {/* Mobile Nav Top Bar */}
       <nav className="md:hidden fixed top-4 left-4 right-4 z-50">
         <div className="bg-black/70 backdrop-blur-md border border-white/10 rounded-xl px-4 py-3 flex justify-between items-center shadow-md">
-          <span className="text-lg font-bold text-white tracking-widest">
+          <span className="text-lg font-bold text-foreground tracking-widest">
             <Link to="https://github.com/soumya-xy">SJ</Link>
           </span>
           <Button
             variant="ghost"
             size="sm"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-white"
+            className="text-foreground"
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
           </Button>
         </div>
 
@@ -92,11 +96,11 @@ const MainNav = ({ activeSection, onSectionClick }: MainNavProps) => {
                   onSectionClick(section);
                   setIsMobileMenuOpen(false);
                 }}
-                className={`text-xl font-semibold capitalize px-4 py-2 rounded-full transition-all tracking-wide
+                className={`text-xl font-semibold capitalize px-4 py-2 rounded-full transition-all tracking-wide text-foreground
                   ${
                     activeSection === section
-                      ? "bg-gradient-to-tr from-orange-900 to-blue-800"
-                      : "text-white/70 hover:bg-white/10 hover:text-white"
+                      ? "bg-gradient-to-tr from-orange-900 to-blue-800 text-white"
+                      : "hover:bg-white/10 hover:text-black dark:hover:text-white text-foreground/70"
                   }`}
               >
                 {section === "hackathons" ? "Achievements" : section}
