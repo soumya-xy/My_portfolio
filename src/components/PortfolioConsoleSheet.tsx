@@ -23,7 +23,7 @@ const PortfolioConsoleSheet = () => {
       {/* Bottom Sheet Content */}
       <SheetContent
         side="bottom"
-        className="p-0 border-none bg-black w-full h-[90vh] flex items-center justify-center"
+        className="p-0 border-none bg-black w-full h-1/3 flex items-center justify-center"
       >
         <div className="w-[95vw] max-w-6xl h-full">
           <PortfolioConsole />
